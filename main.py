@@ -15,5 +15,7 @@ if __name__ == "__main__":
     model.train(features, labels, batch_size = 192, epoch_size = 16)
 
     features, labels = dnn.load("datas/MNIST/mnist_test.csv")
+    
+    features = (features - model.mean) / model.zoom
 
     print("test acc: " + str(model.get_acc(features, labels)))
